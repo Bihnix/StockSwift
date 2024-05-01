@@ -4,11 +4,12 @@
 //
 //  Created by Behnam Ebrahimi on 30/04/2024.
 //
+
 import SwiftUI
 import Foundation
 
 struct ContentView: View {
-    @State private var selectedStock: String = ""
+    @State private var selectedStock: String = "AAPL"
     let stockNames = ["AAPL", "GOOGL", "MSFT", "AMZN"]
 
     var body: some View {
@@ -27,14 +28,17 @@ struct ContentView: View {
             .padding()
             .background(Color.gray.opacity(0.2))
             .cornerRadius(10)
-            Button(action: {
-                print("Button tapped!")
-            }) {
-                Text("About me")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+            HStack {
+                Button(action: {
+                    print("Button tapped!")
+                }) {
+                    Text("Get Stock Data.")
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                Spacer()
             }
         }
         .padding()
@@ -42,6 +46,13 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
+/// The main content view of the StockSwift app.
+///
+/// This view displays a globe icon, a text label, a picker to select a stock, and a button to get stock data.
+/// The selected stock is stored in the `selectedStock` state variable.
+/// The available stock names are defined in the `stockNames` array.
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
